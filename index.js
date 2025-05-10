@@ -7,10 +7,10 @@ const vendorroutes = require("./Routes/routes");
 const firmroutes = require("./Routes/Firmrouter"); 
 
 const app = express();
-const port = 4000;
 
 dotenv.config();
 
+const port = process.env.PORT ||4000;
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -30,7 +30,7 @@ app.use(express.json());
 // Routes
 app.use('/vendor', vendorroutes);  // 🔧 Fixed spelling
 app.use('/firmroute', firmroutes);  // 🔧 Fixed spelling
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.send("Hello home page");
 });
 
